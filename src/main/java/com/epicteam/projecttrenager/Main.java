@@ -18,17 +18,13 @@ public class Main extends Application {
     static int[] arraylevels = {0,0,0,0,0,0,0,0,0,0};
 
     public static void main(String[] args) throws Exception{
-        try {
-            FileReader fr = new FileReader("preservation.txt");
-            Scanner scan = new Scanner(fr);
+        FileReader fr = new FileReader("preservation.txt");
+        try (Scanner scan = new Scanner(fr)) {
             exp = Integer.parseInt(scan.nextLine());
             for (int i = 0; i < 10; i++) {
                 arraylevels[i] = Integer.parseInt(scan.nextLine());
             }
             fr.close();
-            scan.close();
-        }catch (IOException e) {
-            e.printStackTrace();
         }
         Application.launch(args);
     }
