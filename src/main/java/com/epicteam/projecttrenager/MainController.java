@@ -190,7 +190,6 @@ public class MainController implements Initializable {
     }
 
     public  int numberOfLevels(int level){
-        int praxis;
         if(level != 0) {
             switch (level % 3) {
                 case (1):
@@ -215,23 +214,27 @@ public class MainController implements Initializable {
 
     public double[] generation(int difficult, int level){
         int numberOfExample = 1;
-        if(0 < level && level < 4 && difficult == 1){
-            numberOfExample =(int)(Math.random() * 4 + 1);
+        if(difficult == 1) {
+            if (0 < level && level < 4) {
+                numberOfExample = (int) (Math.random() * 4 + 1);
+            }
+            if (3 < level && level < 7) {
+                numberOfExample = (int) (Math.random() * 3 + 8);
+            }
+            if (6 < level && level < 10) {
+                numberOfExample = (int) (Math.random() * 3 + 14);
+            }
         }
-        if(3 < level && level < 7 && difficult == 1){
-            numberOfExample =(int)(Math.random() * 3 + 8);
-        }
-        if(6 < level && level < 10 && difficult == 1){
-            numberOfExample =(int)(Math.random() * 3 + 14);
-        }
-        if(0 < level && level < 4 && difficult == 2){
-            numberOfExample =(int)(Math.random() * 3 + 5);
-        }
-        if(3 < level && level < 7 && difficult == 2){
-            numberOfExample =(int)(Math.random() * 3 + 11);
-        }
-        if(6 < level && level < 10 && difficult == 2){
-            numberOfExample =(int)(Math.random() * 3 + 17);
+        else {
+            if (0 < level && level < 4) {
+                numberOfExample = (int) (Math.random() * 3 + 5);
+            }
+            if (3 < level && level < 7) {
+                numberOfExample = (int) (Math.random() * 3 + 11);
+            }
+            if (6 < level && level < 10) {
+                numberOfExample = (int) (Math.random() * 3 + 17);
+            }
         }
         switch (numberOfExample){
             case 8:
