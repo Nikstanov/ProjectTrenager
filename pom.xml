@@ -10,6 +10,8 @@
     <name>ProjectTrenager</name>
 
     <properties>
+        <sonar.organization>nikstanov</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.7.1</junit.version>
     </properties>
