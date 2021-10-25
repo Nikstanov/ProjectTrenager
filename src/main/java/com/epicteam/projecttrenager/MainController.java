@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Random;
@@ -22,6 +21,8 @@ public class MainController implements Initializable {
     int needexp = 0;
     String answer;
     double[] arrayAnswers;
+
+    private static final Random ran = new Random();
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -215,27 +216,25 @@ public class MainController implements Initializable {
 
     public double[] generation(int difficult, int level){
         int numberOfExample = 1;
-        Random ran = new Random();
-
         if(difficult == 1) {
-            if (0 < level && level < 4) {
+            if (0 < level) {
                 numberOfExample = ran.nextInt(3) + 1;
             }
-            if (3 < level && level < 7) {
+            if (3 < level) {
                 numberOfExample = ran.nextInt(3) + 8;
             }
-            if (6 < level && level < 10) {
+            if (6 < level) {
                 numberOfExample = ran.nextInt(3) + 14;
             }
         }
         else {
-            if (0 < level && level < 4) {
+            if (0 < level) {
                 numberOfExample = ran.nextInt(3) + 5;
             }
-            if (3 < level && level < 7) {
+            if (3 < level) {
                 numberOfExample = ran.nextInt(3)+ 11;
             }
-            if (6 < level && level < 10) {
+            if (6 < level) {
                 numberOfExample = ran.nextInt(3) + 17;
             }
         }
@@ -255,12 +254,12 @@ public class MainController implements Initializable {
     }
 
     public double[] quadEquationsEasy(){
-        int a = (int) (Math.random() * 20 - 10);
+        int a = ran.nextInt(20) - 10;
         while(a == 0) {
-            a = (int) (Math.random() * 20 - 10);
+            a = ran.nextInt(20) - 10;
         }
-        int x1 = (int)(Math.random() * 20 - 10);
-        int x2 = (int)(Math.random() * 20 - 10);
+        int x1 = ran.nextInt(20) - 10;
+        int x2 = ran.nextInt(20) - 10;
 
         String example =  String.format("%s x^2 + (%s)x + %s",a,-(x1 + x2)*a, a*x1*x2);
         question.setText(example);
@@ -269,15 +268,15 @@ public class MainController implements Initializable {
     }
 
     public double[] easyEquationsEasy(){
-        int a =(int)(Math.random()*20 - 10);
+        int a =ran.nextInt(20) - 10;
         while(a == 0) {
-            a = (int) (Math.random() * 20 - 10);
+            a = ran.nextInt(20) - 10;
         }
-        int b = (int) (Math.random() * 20 - 10);
+        int b = ran.nextInt(20) - 10;
         while(b == 0) {
-            b = (int) (Math.random() * 20 - 10);
+            b = ran.nextInt(20) - 10;
         }
-        int x = (int)(Math.random() * 20 - 10);
+        int x = ran.nextInt(20) - 10;
 
         String example =  String.format("%s x + (%s) = %s",a,b, a*x + b);
         question.setText(example);
