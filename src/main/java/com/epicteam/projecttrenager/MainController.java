@@ -9,8 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.security.SecureRandom;
 import java.util.Objects;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -22,7 +22,7 @@ public class MainController implements Initializable {
     String answer;
     double[] arrayAnswers;
 
-    private static final Random ran = new Random();
+    private static final SecureRandom ran = new SecureRandom();
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
