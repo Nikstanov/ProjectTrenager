@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epicteam.projecttrenager.MainController">
+    <AnchorPane fx:id="gameMenu" prefHeight="500.0" prefWidth="400.0">
+        <TextField fx:id="mainTextField" layoutX="150.0" layoutY="350.0" onAction="#clickTextField" prefColumnCount="11">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+        <Button fx:id="answerButton" layoutX="140.0" layoutY="400.0" mnemonicParsing="false" onAction="#clickAnswer" text="Отправить">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+        <Label layoutX="100.0" layoutY="355.0" text="Ответ">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="question" layoutX="160.0" layoutY="280.0" text="Вопрос" textAlignment="CENTER">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane fx:id="forwardfon" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: SteelBlue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Label text="Математический " AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="30.0">
+            <font>
+                <Font name="Calibri Bold Italic" size="35.0" />
+            </font>
+        </Label>
+        <Label text="Тренажер" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="80.0">
+            <font>
+                <Font name="Corbel Bold Italic" size="35.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane fx:id="mainMenu" disable="true" prefHeight="500.0" prefWidth="400.0">
+        <Button fx:id="hardbutton" mnemonicParsing="false" onAction="#click2" text="Сложность: Легкий" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="345.6666666666667">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="levelbutton" mnemonicParsing="false" onAction="#click" text="Уровень: 1" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="202.0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="startButton" mnemonicParsing="false" onAction="#click1" text="Старт" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Label fx:id="diffenough" text="Пройди хотя бы 2 раза на легком" textFill="#ea1b1b" visible="false" AnchorPane.bottomAnchor="110.0">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="levelenough" text="Проблема с доступом" textFill="#ea1b1b" visible="false" AnchorPane.bottomAnchor="110.0" />
+    </AnchorPane>
+    <Label fx:id="expmenu" layoutX="55.0" layoutY="250.0" text="Ваш опыт: " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="200.0">
+        <font>
+            <Font name="Corbel Bold Italic" size="14.0" />
+        </font>
+    </Label>
+    <ComboBox fx:id="anotherfon" onAction="#newfon" prefWidth="150.0" promptText="Синий фон" style="-fx-background-color: LightBlue;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0" />
+</AnchorPane>
