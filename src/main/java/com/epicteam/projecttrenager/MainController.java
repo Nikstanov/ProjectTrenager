@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -159,7 +160,7 @@ public class MainController implements Initializable {
 
 
     @FXML
-    private void click1(ActionEvent event) throws IOException {
+    private void click1(ActionEvent event){
         if(!levelenough.isVisible() && !diffenough.isVisible()) {
             expmenu.setText("Ваш опыт: " + Main.exp);
             if (levelenough.isVisible() && Main.exp >= needexp && level != 0 && Main.arraylevels[level] >= 1) {    // Изменения при достаточном опыте для уровня
@@ -214,26 +215,28 @@ public class MainController implements Initializable {
 
     public double[] generation(int difficult, int level){
         int numberOfExample = 1;
+        Random ran = new Random();
+
         if(difficult == 1) {
             if (0 < level && level < 4) {
-                numberOfExample = (int) (Math.random() * 4 + 1);
+                numberOfExample = ran.nextInt(3) + 1;
             }
             if (3 < level && level < 7) {
-                numberOfExample = (int) (Math.random() * 3 + 8);
+                numberOfExample = ran.nextInt(3) + 8;
             }
             if (6 < level && level < 10) {
-                numberOfExample = (int) (Math.random() * 3 + 14);
+                numberOfExample = ran.nextInt(3) + 14;
             }
         }
         else {
             if (0 < level && level < 4) {
-                numberOfExample = (int) (Math.random() * 3 + 5);
+                numberOfExample = ran.nextInt(3) + 5;
             }
             if (3 < level && level < 7) {
-                numberOfExample = (int) (Math.random() * 3 + 11);
+                numberOfExample = ran.nextInt(3)+ 11;
             }
             if (6 < level && level < 10) {
-                numberOfExample = (int) (Math.random() * 3 + 17);
+                numberOfExample = ran.nextInt(3) + 17;
             }
         }
         switch (numberOfExample){
