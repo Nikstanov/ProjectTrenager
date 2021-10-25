@@ -25,6 +25,7 @@ public class Main extends Application {
             arraylevels[i] = Integer.parseInt(scan.nextLine());
         }
         fr.close();
+        scan.close();
         Application.launch(args);
     }
 
