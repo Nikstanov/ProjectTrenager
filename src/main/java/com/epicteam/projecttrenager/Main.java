@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 
 public class Main extends Application {
-    static int exp = 0;
+    static int exp = 1;
     static int[] arraylevels = {0,0,0,0,0,0,0,0,0,0};
 
     public static void main(String[] args) throws Exception{
