@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epicteam.projecttrenager.MainController">
+<AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane fx:id="gameMenu" prefHeight="500.0" prefWidth="400.0">
         <TextField fx:id="mainTextField" layoutX="150.0" layoutY="350.0" onAction="#clickTextField" prefColumnCount="11">
             <font>
@@ -66,5 +66,5 @@
             <Font name="Corbel Bold Italic" size="14.0" />
         </font>
     </Label>
-    <ComboBox fx:id="anotherfon" onAction="#newfon" prefWidth="150.0" promptText="Синий фон" style="-fx-background-color: LightBlue;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0" />
+    <ComboBox fx:id="anotherfon" onAction="#newFon" prefWidth="150.0" promptText="Синий фон" style="-fx-background-color: LightBlue;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0" />
 </AnchorPane>

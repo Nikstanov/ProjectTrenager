@@ -14,28 +14,33 @@ import java.util.Scanner;
 
 
 public class Main extends Application {
-    static int exp = 15;
-    static int[] arraylevels = {0,0,0,0,0,0,0,0,0,0};
+    int exp = 15;
+    int[] arrayLevels = {0,0,0,0,0,0,0,0,0,0};
 
     public static void main(String[] args) throws Exception{
-        FileReader fr = new FileReader("preservation.txt");
-        try (Scanner scan = new Scanner(fr)) {
-            exp = Integer.parseInt(scan.nextLine());
-            for (int i = 0; i < 10; i++) {
-                arraylevels[i] = Integer.parseInt(scan.nextLine());
-            }
-            fr.close();
-        }
         Application.launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main.fxml")));
+
+        FileReader fr = new FileReader("preservation.txt");
+        try (Scanner scan = new Scanner(fr)) {
+            exp = Integer.parseInt(scan.nextLine());
+            for (int i = 0; i < 10; i++) {
+                arrayLevels[i] = Integer.parseInt(scan.nextLine());
+            }
+            fr.close();
+        }
+
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Main.fxml")));
+
+        MainController controller = new MainController(exp, arrayLevels);
+        loader.setController(controller);
+
+        Parent root = loader.load();
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
-
         stage.setTitle("Математический тренажер");
         stage.setWidth(400);
         stage.setHeight(500);
@@ -46,9 +51,9 @@ public class Main extends Application {
         stage.setOnCloseRequest(windowEvent -> {
             try {
                 FileWriter fw = new FileWriter("preservation.txt");
-                fw.write(exp+"\n");
+                fw.write(controller.exp+"\n");
                 for(int i = 0;i < 10;i++){
-                    fw.write(arraylevels[i] + "\n");
+                    fw.write(controller.arrayLevels[i] + "\n");
                 }
                 fw.close();
             } catch (IOException e) {

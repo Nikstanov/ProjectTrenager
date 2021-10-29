@@ -9,20 +9,24 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
-import java.security.SecureRandom;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    int exp;
+    int[] arrayLevels;
     int level = 1;
     int difficult = 1;
     int praxis;
     int needexp = 0;
     String answer;
-    double[] arrayAnswers;
+    String answer1;
 
-    private static final SecureRandom ran = new SecureRandom();
+    public MainController(int exp, int[] arrayLevels){
+        this.exp = exp;
+        this.arrayLevels = arrayLevels;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -32,7 +36,7 @@ public class MainController implements Initializable {
         gameMenu.setDisable(true);
         mainMenu.setVisible(true);
         gameMenu.setVisible(false);
-        expmenu.setText("ваш опыт: " + Main.exp);
+        expmenu.setText("Ваш опыт: " + exp);
     }
 
     @FXML
@@ -45,7 +49,7 @@ public class MainController implements Initializable {
     private AnchorPane forwardfon;
 
     @FXML
-    public void newfon(ActionEvent event){
+    public void newFon(ActionEvent event){
         switch (anotherfon.getValue()) {
             case ("Синий фон"):
                 anotherfon.setStyle("-fx-background-color: LightBlue;");
@@ -67,6 +71,7 @@ public class MainController implements Initializable {
         }
     }
 
+
     @FXML
     private Button hardbutton;
 
@@ -82,13 +87,13 @@ public class MainController implements Initializable {
                 difficult = 2;
                 needexp = 200 * (level - 1) + 100;
 
-                if (Main.arraylevels[level] != 2  && level != 0) {
+                if (arrayLevels[level] != 2  && level != 0) {
                     diffenough.setLayoutX(202);
                     diffenough.setText("Пройди хотя бы 2 раза на легком");
                     diffenough.setVisible(true);
                 }
                 else{
-                    if(needexp > Main.exp && level != 0){
+                    if(needexp > exp && level != 0){
                         diffenough.setText("Недостаточно опыта:" +needexp);
                         diffenough.setVisible(true);
                         diffenough.setLayoutX(220);
@@ -129,12 +134,12 @@ public class MainController implements Initializable {
         }
 
         if(level != 0) {
-            if (Main.arraylevels[level] < 1) {
+            if (arrayLevels[level] < 1) {
                 levelenough.setText("Предыдущий уровень");
                 levelenough.setVisible(true);
                 levelenough.setLayoutX(50);
             } else {
-                if (Main.exp < needexp) {
+                if (exp < needexp) {
                     levelenough.setLayoutX(79);
                     levelenough.setText("Опыт: " + needexp);
                     levelenough.setVisible(true);
@@ -163,11 +168,11 @@ public class MainController implements Initializable {
     @FXML
     private void click1(ActionEvent event){
         if(!levelenough.isVisible() && !diffenough.isVisible()) {
-            expmenu.setText("Ваш опыт: " + Main.exp);
-            if (levelenough.isVisible() && Main.exp >= needexp && level != 0 && Main.arraylevels[level] >= 1) {    // Изменения при достаточном опыте для уровня
+            expmenu.setText("Ваш опыт: " + exp);
+            if (levelenough.isVisible() && exp >= needexp && level != 0 && arrayLevels[level] >= 1) {    // Изменения при достаточном опыте для уровня
                 levelenough.setVisible(false);
             }
-            if (diffenough.isVisible() && Main.exp >= needexp && level != 0 && Main.arraylevels[level] > 1) {  // Измения при достаточном опыте для уровня сложности
+            if (diffenough.isVisible() && exp >= needexp && level != 0 && arrayLevels[level] > 1) {  // Измения при достаточном опыте для уровня сложности
                 diffenough.setVisible(false);
             }
 
@@ -177,8 +182,7 @@ public class MainController implements Initializable {
             gameMenu.setVisible(true);
 
             praxis = numberOfLevels(level);
-
-            arrayAnswers = generation(difficult,level);
+            newQuestion();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -191,7 +195,14 @@ public class MainController implements Initializable {
         }
     }
 
-    public  int numberOfLevels(int level){
+    public void newQuestion(){
+        generation gen = new generation(level, difficult);
+        question.setText(gen.question);
+        answer1 = gen.answer1;
+        mainTextField.setText(answer1);
+    }
+
+    private int numberOfLevels(int level){
         if(level != 0) {
             switch (level % 3) {
                 case (1):
@@ -214,115 +225,27 @@ public class MainController implements Initializable {
         return praxis;
     }
 
-    public double[] generation(int difficult, int level){
-        int numberOfExample = 1;
-        if(difficult == 1) {
-            if (0 < level) {
-                numberOfExample = ran.nextInt(3) + 1;
-            }
-            if (3 < level) {
-                numberOfExample = ran.nextInt(3) + 8;
-            }
-            if (6 < level) {
-                numberOfExample = ran.nextInt(3) + 14;
-            }
-        }
-        else {
-            if (0 < level) {
-                numberOfExample = ran.nextInt(3) + 5;
-            }
-            if (3 < level) {
-                numberOfExample = ran.nextInt(3)+ 11;
-            }
-            if (6 < level) {
-                numberOfExample = ran.nextInt(3) + 17;
-            }
-        }
-        switch (numberOfExample){
-            case 8:
-                arrayAnswers = quadEquationsEasy();
-                break;
-            case 1:
-                arrayAnswers = easyEquationsEasy();
-                break;
-            default:
-                question.setText("В разработке");
-                arrayAnswers = new double[]{0};
-                break;
-        }
-        return arrayAnswers;
-    }
-
-    public double[] quadEquationsEasy(){
-        int a = ran.nextInt(20) - 10;
-        while(a == 0) {
-            a = ran.nextInt(20) - 10;
-        }
-        int x1 = ran.nextInt(20) - 10;
-        int x2 = ran.nextInt(20) - 10;
-
-        String example =  String.format("%s x^2 + (%s)x + %s",a,-(x1 + x2)*a, a*x1*x2);
-        question.setText(example);
-
-        return new double[]{x1,x2};
-    }
-
-    public double[] easyEquationsEasy(){
-        int a =ran.nextInt(20) - 10;
-        while(a == 0) {
-            a = ran.nextInt(20) - 10;
-        }
-        int b = ran.nextInt(20) - 10;
-        while(b == 0) {
-            b = ran.nextInt(20) - 10;
-        }
-        int x = ran.nextInt(20) - 10;
-
-        String example =  String.format("%s x + (%s) = %s",a,b, a*x + b);
-        question.setText(example);
-
-        return new double[]{x};
-    }
-
     @FXML
     private void clickTextField(ActionEvent event){answer = mainTextField.getText();}
 
     @FXML
     private void clickAnswer(ActionEvent event){
         answer = mainTextField.getText();
-        String answer1;
-        String answer2;
 
-        switch (arrayAnswers.length){
-            case 1:
-                answer1 = "" + arrayAnswers[0];
-                answer2 = "";
-                break;
-            case 2:
-                answer1 = arrayAnswers[1] + "," + arrayAnswers[0];
-                answer2 = arrayAnswers[0] + "," + arrayAnswers[1];
-                break;
-            default:
-                answer1 = arrayAnswers[0] + "";
-                answer2 = "";
-                break;
-        }
-
-
-        if(Objects.equals(answer, answer1) || Objects.equals(answer, answer2)) {
-            Main.exp = Main.exp + 10;
+        if(Objects.equals(answer, answer1)) {
+            exp = exp + 10;
         }
         else{
-            if(Main.exp > 10){
-                Main.exp = Main.exp - 10;
+            if(exp > 10){
+                exp = exp - 10;
                 if(difficult == 2){
-                    Main.exp = Main.exp - 10;
+                    exp = exp - 10;
                 }
             }
             else{
-                Main.exp = 0;
+                exp = 0;
             }
         }
-        expmenu.setText("Ваш опыт: " + Main.exp);
+        expmenu.setText("Ваш опыт: " + exp);
     }
 }
