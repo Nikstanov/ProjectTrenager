@@ -2,7 +2,7 @@ package com.epicteam.projecttrenager;
 
 import java.security.SecureRandom;
 
-public class generation {
+public class Generation {
     int level;
     int difficult;
     String question;
@@ -10,13 +10,13 @@ public class generation {
 
     private static final SecureRandom ran = new SecureRandom();
 
-    generation(int level, int difficult){
+    Generation(int level, int difficult){
         this.difficult = difficult;
         this.level = level;
         generator(level,difficult);
     }
 
-    private void generator(int difficult, int level){
+    private void generator(int level, int difficult){
         int numberOfExample = 1;
         if(difficult == 1) {
             if (0 < level) {

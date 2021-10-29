@@ -17,7 +17,7 @@ public class Main extends Application {
     int exp = 15;
     int[] arrayLevels = {0,0,0,0,0,0,0,0,0,0};
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args){
         Application.launch(args);
     }
 

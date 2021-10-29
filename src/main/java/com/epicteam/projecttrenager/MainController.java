@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    private final String yourExp = "Ваш опыт: ";
     int exp;
     int[] arrayLevels;
     int level = 1;
@@ -36,7 +37,7 @@ public class MainController implements Initializable {
         gameMenu.setDisable(true);
         mainMenu.setVisible(true);
         gameMenu.setVisible(false);
-        expmenu.setText("Ваш опыт: " + exp);
+        expmenu.setText(yourExp + exp);
     }
 
     @FXML
@@ -168,7 +169,7 @@ public class MainController implements Initializable {
     @FXML
     private void click1(ActionEvent event){
         if(!levelenough.isVisible() && !diffenough.isVisible()) {
-            expmenu.setText("Ваш опыт: " + exp);
+            expmenu.setText(yourExp + exp);
             if (levelenough.isVisible() && exp >= needexp && level != 0 && arrayLevels[level] >= 1) {    // Изменения при достаточном опыте для уровня
                 levelenough.setVisible(false);
             }
@@ -196,7 +197,7 @@ public class MainController implements Initializable {
     }
 
     public void newQuestion(){
-        generation gen = new generation(level, difficult);
+        Generation gen = new Generation(level, difficult);
         question.setText(gen.question);
         answer1 = gen.answer1;
         mainTextField.setText(answer1);
@@ -246,6 +247,6 @@ public class MainController implements Initializable {
                 exp = 0;
             }
         }
-        expmenu.setText("Ваш опыт: " + exp);
+        expmenu.setText(yourExp + exp);
     }
 }
