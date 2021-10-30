@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
-    private final String yourExp = "Ваш опыт: ";
+    private static final String yourExp = "Ваш опыт: ";
     int exp;
     int[] arrayLevels;
     int level = 1;
