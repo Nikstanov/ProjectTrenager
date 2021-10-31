@@ -10,9 +10,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -28,6 +28,9 @@ public class MainController implements Initializable {
     int needexp = 0;
     String answer;
     String answer1;
+    String answer2;
+    String answer3;
+    boolean answerIsRight;
     boolean returnBack;
 
     Thread timer = new Thread(new Timer());
@@ -233,26 +236,46 @@ public class MainController implements Initializable {
     @FXML
     private Button answerButton;
 
+    @FXML
+    private Label question2;
+
+    @FXML
+    private Label question3;
+
     private synchronized void newQuestion(){
         livesLabel.setText("Жизней - " + lives);
         Generation gen = new Generation(level, difficult);
         question1.setText(gen.question1);
+        question1.setLayoutX(gen.layoutQuestion1);
+        question2.setText(gen.question2);
+        question2.setLayoutX(gen.layoutQuestion2);
+        question2.setFont(new Font(gen.question2Font));
+        question2.setLayoutY(gen.layoutQuestion2Y);
+        question3.setLayoutX(gen.layoutQuestion3);
+        question3.setText(gen.question3);
         answer1 = gen.answer1;
+        answer2 = gen.answer2;
+        answer3 = gen.answer3;
         mainTextField.setText(answer1);
         numberOfPraxis.setText(String.format("осталось %s примеров из %s", praxisLeft,praxis));
-        if(praxisLeft == 0 || lives == 0) {
+        if(praxisLeft == 0) {
+            if(level != 0) {
+                exp = exp + 200;
+            }
+            if (arrayLevels[level] < 2){
+                arrayLevels[level]++;
+            }
+        }
+        if(lives == 0){
             mainMenu.setVisible(true);
             mainMenu.setDisable(false);
             gameMenu.setDisable(true);
             gameMenu.setVisible(false);
-            if(level != 0) {
-                exp = exp + 200;
-            }
-            if(lives == 0 && level != 0){
+            if(level != 0){
                 exp = exp - 400;
             }
-            expmenu.setText(STRINGEXP + exp);
         }
+        expmenu.setText(STRINGEXP + exp);
         praxisLeft--;
     }
 
@@ -287,7 +310,9 @@ public class MainController implements Initializable {
     private void clickAnswer(ActionEvent event){
         answer = mainTextField.getText();
 
-        if(Objects.equals(answer, answer1)) {
+        answerIsRight = false;
+        checkAnswer();
+        if(answerIsRight) {
             exp = exp + 5;
             if(difficult == 2){
                 exp = exp + 5;
@@ -308,6 +333,26 @@ public class MainController implements Initializable {
         expmenu.setText(STRINGEXP + exp);
         newQuestion();
         width = 200;
+    }
+
+    private void checkAnswer(){
+        boolean flag = false;
+        if(answer1 != null){
+            if(answer1.equals(answer)){
+                flag = true;
+            }
+        }
+        if(answer2 != null){
+            if(answer2.equals(answer)){
+                flag = true;
+            }
+        }
+        if(answer3 != null){
+            if(answer3.equals(answer)){
+                flag = true;
+            }
+        }
+        answerIsRight = flag;
     }
 
     @FXML

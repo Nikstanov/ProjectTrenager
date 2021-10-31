@@ -21,7 +21,7 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="question1" layoutX="160.0" layoutY="270.0" text="Вопрос" textAlignment="CENTER">
+        <Label fx:id="question1" layoutX="115.0" layoutY="270.0" text="Вопрос" textAlignment="CENTER">
             <font>
                 <Font size="22.0" />
             </font>
@@ -30,6 +30,15 @@
       <Label fx:id="livesLabel" layoutX="174.0" layoutY="443.0" text="Жизней - 3" />
       <Button fx:id="buttonReturn" layoutX="303.0" layoutY="230.0" mnemonicParsing="false" onAction="#clickReturn" text="Закончить" />
       <Rectangle fx:id="timerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#9b2139" height="10.0" layoutX="100.0" layoutY="314.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Label fx:id="question2" layoutX="125.0" layoutY="266.0" text="-   +  -">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="question3" layoutX="115.0" layoutY="246.0" text="15   15">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
     </AnchorPane>
     <AnchorPane fx:id="forwardfon" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: SteelBlue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <Label text="Математический " AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="30.0">
