@@ -2,29 +2,34 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane fx:id="gameMenu" prefHeight="500.0" prefWidth="400.0">
-        <TextField fx:id="mainTextField" layoutX="150.0" layoutY="350.0" onAction="#clickTextField" prefColumnCount="11">
+        <TextField fx:id="mainTextField" layoutX="150.0" layoutY="340.0" onAction="#clickTextField" prefColumnCount="11">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <Button fx:id="answerButton" layoutX="140.0" layoutY="400.0" mnemonicParsing="false" onAction="#clickAnswer" text="Отправить">
+        <Button fx:id="answerButton" layoutX="140.0" layoutY="390.0" mnemonicParsing="false" onAction="#clickAnswer" text="Отправить">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Label layoutX="100.0" layoutY="355.0" text="Ответ">
+        <Label layoutX="100.0" layoutY="345.0" text="Ответ">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="question" layoutX="160.0" layoutY="280.0" text="Вопрос" textAlignment="CENTER">
+        <Label fx:id="question1" layoutX="160.0" layoutY="270.0" text="Вопрос" textAlignment="CENTER">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
+      <Label fx:id="numberOfPraxis" layoutX="130.0" layoutY="432.0" text="осталось _ примеров из _" />
+      <Label fx:id="livesLabel" layoutX="174.0" layoutY="443.0" text="Жизней - 3" />
+      <Button fx:id="buttonReturn" layoutX="303.0" layoutY="230.0" mnemonicParsing="false" onAction="#clickReturn" text="Закончить" />
+      <Rectangle fx:id="timerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#9b2139" height="10.0" layoutX="100.0" layoutY="314.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
     </AnchorPane>
     <AnchorPane fx:id="forwardfon" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: SteelBlue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <Label text="Математический " AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="30.0">

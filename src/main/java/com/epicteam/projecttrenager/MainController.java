@@ -1,5 +1,6 @@
 package com.epicteam.projecttrenager;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.Objects;
@@ -20,9 +23,15 @@ public class MainController implements Initializable {
     int level = 1;
     int difficult = 1;
     int praxis;
+    int praxisLeft;
+    int lives;
     int needexp = 0;
     String answer;
     String answer1;
+    boolean returnBack;
+
+    Thread timer = new Thread(new Timer());
+    int width = 200;
 
     public MainController(int exp, int[] arrayLevels){
         this.exp = exp;
@@ -38,6 +47,7 @@ public class MainController implements Initializable {
         mainMenu.setVisible(true);
         gameMenu.setVisible(false);
         expmenu.setText(STRINGEXP + exp);
+        returnBack = false;
     }
 
     @FXML
@@ -159,12 +169,19 @@ public class MainController implements Initializable {
     private AnchorPane gameMenu;
 
     @FXML
-    private Label question;
+    private Label question1;
 
     @FXML
     private TextField mainTextField;
 
+    @FXML
+    private Label numberOfPraxis;
 
+    @FXML
+    private Label livesLabel;
+
+    @FXML
+    private Button buttonReturn;
 
     @FXML
     private void click1(ActionEvent event){
@@ -183,7 +200,24 @@ public class MainController implements Initializable {
             gameMenu.setVisible(true);
 
             praxis = numberOfLevels(level);
+            praxisLeft = praxis;
+
+            lives = 3;
+            livesLabel.setVisible(true);
+
+            buttonReturn.setVisible(false);
+            if(level == 0){
+                livesLabel.setVisible(false);
+                buttonReturn.setVisible(true);
+            }
+
             newQuestion();
+
+            width = 200;
+            if(!timer.isAlive()){
+                Thread timer = new Thread(new Timer());
+                timer.start();
+            }
         }
         else{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -196,12 +230,32 @@ public class MainController implements Initializable {
         }
     }
 
-    public void newQuestion(){
+    @FXML
+    private Button answerButton;
+
+    private synchronized void newQuestion(){
+        livesLabel.setText("Жизней - " + lives);
         Generation gen = new Generation(level, difficult);
-        question.setText(gen.question);
+        question1.setText(gen.question1);
         answer1 = gen.answer1;
         mainTextField.setText(answer1);
+        numberOfPraxis.setText(String.format("осталось %s примеров из %s", praxisLeft,praxis));
+        if(praxisLeft == 0 || lives == 0) {
+            mainMenu.setVisible(true);
+            mainMenu.setDisable(false);
+            gameMenu.setDisable(true);
+            gameMenu.setVisible(false);
+            if(level != 0) {
+                exp = exp + 200;
+            }
+            if(lives == 0 && level != 0){
+                exp = exp - 400;
+            }
+            expmenu.setText(STRINGEXP + exp);
+        }
+        praxisLeft--;
     }
+
 
     private int numberOfLevels(int level){
         if(level != 0) {
@@ -234,13 +288,17 @@ public class MainController implements Initializable {
         answer = mainTextField.getText();
 
         if(Objects.equals(answer, answer1)) {
-            exp = exp + 10;
+            exp = exp + 5;
+            if(difficult == 2){
+                exp = exp + 5;
+            }
         }
         else{
+            lives--;
             if(exp > 10){
-                exp = exp - 10;
+                exp = exp - 5;
                 if(difficult == 2){
-                    exp = exp - 10;
+                    exp = exp - 5;
                 }
             }
             else{
@@ -248,5 +306,61 @@ public class MainController implements Initializable {
             }
         }
         expmenu.setText(STRINGEXP + exp);
+        newQuestion();
+        width = 200;
+    }
+
+    @FXML
+    private void clickReturn(ActionEvent event){
+        if(!returnBack){
+            buttonReturn.setText("Уже устал\nНажми еще раз");
+        }
+        else{
+            mainMenu.setVisible(true);
+            mainMenu.setDisable(false);
+            gameMenu.setDisable(true);
+            gameMenu.setVisible(false);
+        }
+    }
+
+    @FXML
+    private Rectangle timerRectangle;
+
+    class Timer implements Runnable{
+        @Override
+        public void run() {
+            timerRectangle.setFill(Color.DODGERBLUE);
+            while (width >= 1 && gameMenu.isVisible()) {
+                timerRectangle.setWidth(width);
+                width = width - 1;
+                switch (width){
+                    case 150:
+                        timerRectangle.setFill(Color.rgb(99,22,225));
+                        break;
+                    case 100:
+                        timerRectangle.setFill(Color.rgb(148,60,201));
+                        break;
+                    case 50:
+                        timerRectangle.setFill(Color.rgb(155,33,57));
+                        break;
+                    default:
+                        break;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(gameMenu.isVisible()){
+                lives = lives - 1;
+                exp = exp - 5;
+                Platform.runLater(MainController.this::newQuestion);
+                timerRectangle.setWidth(200);
+                width = 200;
+                Thread timer = new Thread(new Timer());
+                timer.start();
+            }
+        }
     }
 }

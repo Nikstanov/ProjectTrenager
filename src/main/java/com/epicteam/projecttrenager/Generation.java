@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 public class Generation {
     int level;
     int difficult;
-    String question;
+    String question1;
     String answer1;
 
     private static final SecureRandom ran = new SecureRandom();
@@ -48,7 +48,7 @@ public class Generation {
                 easyEquationsEasy();
                 break;
             default:
-                question = "В разработке";
+                question1 = "В разработке";
                 answer1 = "0";
                 break;
         }
@@ -62,7 +62,7 @@ public class Generation {
         int x1 = ran.nextInt(20) - 10;
         int x2 = ran.nextInt(20) - 10;
 
-        question = String.format("%s x^2 + (%s)x + %s",a,-(x1 + x2)*a, a*x1*x2);
+        question1 = String.format("%s x^2 + (%s)x + %s",a,-(x1 + x2)*a, a*x1*x2);
         answer1 = x1 + "," + x2;
     }
 
@@ -77,7 +77,7 @@ public class Generation {
         }
         int x = ran.nextInt(20) - 10;
 
-        question = String.format("%s x + (%s) = %s",a,b, a*x + b);
+        question1 = String.format("%s x + (%s) = %s",a,b, a*x + b);
         answer1 = String.format("%s",x);
     }
 }
