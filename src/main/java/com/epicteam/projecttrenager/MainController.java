@@ -215,8 +215,8 @@ public class MainController implements Initializable {
 
             width = 200;
             if(!timer.isAlive()){
-                Thread timer = new Thread(new Timer());
-                timer.start();
+                Thread timer1 = new Thread(new Timer());
+                timer1.start();
             }
         }
         else{
@@ -348,8 +348,9 @@ public class MainController implements Initializable {
                 }
                 try {
                     Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } catch (InterruptedException ie) {
+                    ie.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }
             if(gameMenu.isVisible()){
@@ -358,8 +359,8 @@ public class MainController implements Initializable {
                 Platform.runLater(MainController.this::newQuestion);
                 timerRectangle.setWidth(200);
                 width = 200;
-                Thread timer = new Thread(new Timer());
-                timer.start();
+                Thread timer1 = new Thread(new Timer());
+                timer1.start();
             }
         }
     }
