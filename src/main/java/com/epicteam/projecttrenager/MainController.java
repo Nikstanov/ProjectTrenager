@@ -349,7 +349,6 @@ public class MainController implements Initializable {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException ie) {
-                    ie.printStackTrace();
                     Thread.currentThread().interrupt();
                 }
             }
