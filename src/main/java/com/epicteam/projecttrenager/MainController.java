@@ -336,21 +336,12 @@ public class MainController implements Initializable {
     }
 
     private void checkAnswer(){
-        boolean flag = false;
-        if(answer1 != null){
-            if(answer1.equals(answer)){
-                flag = true;
-            }
+        boolean flag = answer1 != null && answer1.equals(answer);
+        if(answer2 != null && answer2.equals(answer)){
+            flag = true;
         }
-        if(answer2 != null){
-            if(answer2.equals(answer)){
-                flag = true;
-            }
-        }
-        if(answer3 != null){
-            if(answer3.equals(answer)){
-                flag = true;
-            }
+        if(answer3 != null && answer3.equals(answer)){
+            flag = true;
         }
         answerIsRight = flag;
     }
