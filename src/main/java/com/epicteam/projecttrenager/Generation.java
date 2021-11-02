@@ -1,6 +1,7 @@
 package com.epicteam.projecttrenager;
 
 import java.security.SecureRandom;
+import java.text.DecimalFormat;
 
 public class Generation {
     int level;
@@ -13,9 +14,8 @@ public class Generation {
     String question1;
     String question2;
     String question3;
-    String answer1;
-    String answer2 = null;
-    String answer3 = null;
+    String[] answer0 = new String[]{null,null,null,null,null,null};
+
 
     private static final SecureRandom ran = new SecureRandom();
 
@@ -29,24 +29,24 @@ public class Generation {
         int numberOfExample = 1;
         if(difficult == 1) {
             if (0 < level) {
-                numberOfExample = ran.nextInt(3) + 1;
+                numberOfExample = ran.nextInt(2) + 1;
             }
             if (3 < level) {
-                numberOfExample = ran.nextInt(3) + 8;
+                numberOfExample = ran.nextInt(2) + 5;
             }
             if (6 < level) {
-                numberOfExample = ran.nextInt(3) + 14;
+                numberOfExample = ran.nextInt(2) + 9;
             }
         }
         else {
             if (0 < level) {
-                numberOfExample = ran.nextInt(3) + 5;
+                numberOfExample = ran.nextInt(2) + 3;
             }
             if (3 < level) {
-                numberOfExample = ran.nextInt(3)+ 11;
+                numberOfExample = ran.nextInt(2)+ 7;
             }
             if (6 < level) {
-                numberOfExample = ran.nextInt(3) + 17;
+                numberOfExample = ran.nextInt(2) + 11;
             }
         }
         switch (numberOfExample){
@@ -56,14 +56,93 @@ public class Generation {
             case 2:
                 fraction();
                 break;
-            case 8:
+            case 3:
+                hardEquationsEasy();
+                break;
+            case 4:
+                hardEquationsEasy1();
+                break;
+            case 5:
                 quadEquationsEasy();
+                break;
+            case 7:
+                qubeEquations();
                 break;
             default:
                 question1 = "В разработке";
-                answer1 = "0";
+                answer0[0] = "0";
                 break;
         }
+    }
+
+    private void qubeEquations(){
+        int a = ran.nextInt(20) - 10;
+        while(a == 0) {
+            a = ran.nextInt(20) - 10;
+        }
+        int x1 = ran.nextInt(20) - 10;
+        int x2 = ran.nextInt(20) - 10;
+        int x3 = ran.nextInt(20) - 10;
+
+        if(Math.abs(a) == 1){
+            question1 = "   x";
+        }
+        else{
+            question1 = a + "x";
+        }
+        int d = -a*(x1+x2+x3);
+        if(d < 0){
+            question1 = question1 + " - " + (x1+x2+x3)*a + "x";
+        }
+        else{
+            if(d != 0) {
+                question1 = question1 + " + " + -(x1+x2+x3)*a + "x";
+            }
+        }
+        int b = x1*x2 + x1*x3 + x2*x3;
+        if(a*b < 0){
+            question1 = question1 + " - " + -a*b + "x";
+        }
+        else{
+            if(a*b != 0 ) {
+                question1 = question1 + " + " + a*b + "x";
+            }
+        }
+        int c = -a * x1 * x2 * x3;
+        if(c < 0){
+            question1 = question1 + " - " + -c;
+        }
+        else{
+            if(c != 0 ) {
+                question1 = question1 + " + " + c;
+            }
+        }
+        question1 = question1 + " = 0";
+
+        if(a < 0){
+            layoutQuestion2 = 147;
+            if(a == -10){
+                layoutQuestion2 = layoutQuestion2 + 11;
+            }
+        }
+
+        question2 = "3         ";
+        if(a < 0){
+            question2 = question2 + "  ";
+        }
+        if(Math.abs(d) > 10){
+            question2 = question2 + "     ";
+        }
+        if(Math.abs(d) > 100){
+            question2 = question2 + "    ";
+        }
+        question2 = question2 + "2";
+        answer0[0] = x1 + "," + x2 + "," + x3;
+        answer0[1] = x1 + "," + x3 + "," + x2;
+        answer0[2] = x2 + "," + x1 + "," + x3;
+        answer0[3] = x2 + "," + x3 + "," + x1;
+        answer0[4] = x3 + "," + x1 + "," + x2;
+        answer0[5] = x3 + "," + x2 + "," + x1;
     }
 
     private void quadEquationsEasy(){
@@ -104,8 +183,39 @@ public class Generation {
             }
         }
         question2 = "2";
-        answer1 = x1 + "," + x2;
-        answer2 = x2 + "," + x1;
+        answer0[0] = x1 + "," + x2;
+        answer0[1] = x2 + "," + x1;
+    }
+
+    private void hardEquationsEasy(){
+        DecimalFormat df = new DecimalFormat("###.##");
+        double a = ran.nextInt(200)/10d - 10;
+        while(a == 0) {
+            a = ran.nextInt(200)/10d - 10;
+        }
+        double b = ran.nextInt(200)/10d - 10;
+        while(b == 0) {
+            b = ran.nextInt(200)/10d - 10;
+        }
+        double x = ran.nextInt(20)/10d - 10;
+
+        question1 = df.format(a) + "x";
+        if(b < 0){
+            question1 = question1 + " - " + df.format(-b);
+        }
+        else{
+            question1 = question1 + " + " + df.format(b);
+        }
+        question1 = question1 + " = " + df.format(a*x + b);
+
+        long iPart = (long) x;
+        if (Math.abs(x - iPart) > 0.001) {
+            answer0[0] = String.format("%.1f", x);
+        }
+        else{
+            answer0[1] = String.format("%.0f",x);
+        }
+        layoutQuestion1 = 145;
     }
 
     private void easyEquationsEasy(){
@@ -127,8 +237,33 @@ public class Generation {
             question1 = question1 + " + " + b;
         }
         question1 = question1 + " = " + (a*x + b);
-        answer1 = String.format("%s",x);
+        answer0[0] = String.format("%s",x);
         layoutQuestion1 = 145;
+    }
+
+    private void hardEquationsEasy1(){
+        int a = znak(ran.nextInt(80) + 21);
+        int b = znak(ran.nextInt(80) + 21);
+        int x = znak(ran.nextInt(80) + 21);
+
+        question1 = a +"x";
+        if(b < 0){
+            question1 = question1 + " - " + -b;
+        }
+        else{
+            question1 = question1 + " + " + b;
+        }
+        question1 = question1 + " = " + (a*x + b);
+        answer0[0] = String.format("%s",x);
+        layoutQuestion1 = 145;
+    }
+
+    private int znak(int number){
+        int znak = ran.nextInt(2) + 1;
+        if(znak == 2){
+            number = number * (-1);
+        }
+        return number;
     }
 
     private void fraction(){
@@ -163,17 +298,19 @@ public class Generation {
         int x1 = a*c1 + d*c;
         int x2 =b*c*c1;
         int x = x1 / x2;
-        answer1 = "";
+        answer0[0] = "";
         if (x != 0) {
-            answer1 = x + " ";
+            answer0[0] = x + " ";
             x1 = x1 - x2;
         }
-        for(int i = 2; i<x2; i++){
-            if(x1 % i == 0 && x2 % i == 0){
-                x1 = x1 / i;
-                x2 = x2 / i;
+        if(x1 != 0) {
+            for (int i = 2; i < x2; i++) {
+                if (x1 % i == 0 && x2 % i == 0) {
+                    x1 = x1 / i;
+                    x2 = x2 / i;
+                }
             }
+            answer0[0] = answer0[0] + x1 + "/" + x2;
         }
-        answer1 = answer1  + x1 +"/" + x2;
     }
 }

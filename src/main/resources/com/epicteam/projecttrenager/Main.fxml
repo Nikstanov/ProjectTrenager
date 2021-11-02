@@ -53,17 +53,17 @@
         </Label>
     </AnchorPane>
     <AnchorPane fx:id="mainMenu" disable="true" prefHeight="500.0" prefWidth="400.0">
+        <Button fx:id="startButton" mnemonicParsing="false" onAction="#click1" text="Старт" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
         <Button fx:id="hardbutton" mnemonicParsing="false" onAction="#click2" text="Сложность: Легкий" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="345.6666666666667">
             <font>
                 <Font size="15.0" />
             </font>
         </Button>
         <Button fx:id="levelbutton" mnemonicParsing="false" onAction="#click" text="Уровень: 1" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="202.0">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Button>
-        <Button fx:id="startButton" mnemonicParsing="false" onAction="#click1" text="Старт" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
             <font>
                 <Font size="20.0" />
             </font>

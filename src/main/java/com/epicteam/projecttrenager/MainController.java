@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -26,10 +28,10 @@ public class MainController implements Initializable {
     int praxisLeft;
     int lives;
     int needexp = 0;
+
+    int praxisInARow;
     String answer;
-    String answer1;
-    String answer2;
-    String answer3;
+    String[] answer0;
     boolean answerIsRight;
     boolean returnBack;
 
@@ -51,7 +53,11 @@ public class MainController implements Initializable {
         gameMenu.setVisible(false);
         expmenu.setText(STRINGEXP + exp);
         returnBack = false;
+        startButton.defaultButtonProperty();
     }
+
+    @FXML
+    private Button startButton;
 
     @FXML
     private ComboBox<String> anotherfon;
@@ -202,6 +208,8 @@ public class MainController implements Initializable {
             gameMenu.setDisable(false);
             gameMenu.setVisible(true);
 
+            praxisInARow = 0;
+
             praxis = numberOfLevels(level);
             praxisLeft = praxis;
 
@@ -253,10 +261,8 @@ public class MainController implements Initializable {
         question2.setLayoutY(gen.layoutQuestion2Y);
         question3.setLayoutX(gen.layoutQuestion3);
         question3.setText(gen.question3);
-        answer1 = gen.answer1;
-        answer2 = gen.answer2;
-        answer3 = gen.answer3;
-        mainTextField.setText(answer1);
+        answer0 = gen.answer0;
+        mainTextField.setText(answer0[0]);
         numberOfPraxis.setText(String.format("осталось %s примеров из %s", praxisLeft,praxis));
         if(praxisLeft == 0) {
             if(level != 0) {
@@ -265,13 +271,17 @@ public class MainController implements Initializable {
             if (arrayLevels[level] < 2){
                 arrayLevels[level]++;
             }
+            mainMenu.setVisible(true);
+            mainMenu.setDisable(false);
+            gameMenu.setDisable(true);
+            gameMenu.setVisible(false);
         }
         if(lives == 0){
             mainMenu.setVisible(true);
             mainMenu.setDisable(false);
             gameMenu.setDisable(true);
             gameMenu.setVisible(false);
-            if(level != 0){
+            if(level != 0 && exp > 0){
                 exp = exp - 400;
             }
         }
@@ -306,19 +316,31 @@ public class MainController implements Initializable {
     @FXML
     private void clickTextField(ActionEvent event){answer = mainTextField.getText();}
 
+
     @FXML
     private void clickAnswer(ActionEvent event){
+        if (mainTextField.getText() != null){
+            answerEvent();
+        }
+    }
+
+    public void answerEvent(){
         answer = mainTextField.getText();
 
         answerIsRight = false;
         checkAnswer();
         if(answerIsRight) {
+            praxisInARow++;
+            if (praxisInARow == 7 && lives < 3){
+                lives++;
+            }
             exp = exp + 5;
             if(difficult == 2){
                 exp = exp + 5;
             }
         }
         else{
+            praxisInARow = 0;
             lives--;
             if(exp > 10){
                 exp = exp - 5;
@@ -336,12 +358,12 @@ public class MainController implements Initializable {
     }
 
     private void checkAnswer(){
-        boolean flag = answer1 != null && answer1.equals(answer);
-        if(answer2 != null && answer2.equals(answer)){
-            flag = true;
-        }
-        if(answer3 != null && answer3.equals(answer)){
-            flag = true;
+        boolean flag = false;
+        for(int i = 0; i < 6; i++){
+            if (answer0[i] != null && answer.equals(answer0[i])) {
+                flag = true;
+                break;
+            }
         }
         answerIsRight = flag;
     }
@@ -365,10 +387,12 @@ public class MainController implements Initializable {
     class Timer implements Runnable{
         @Override
         public void run() {
-            timerRectangle.setFill(Color.DODGERBLUE);
             while (width >= 1 && gameMenu.isVisible()) {
                 timerRectangle.setWidth(width);
                 width = width - 1;
+                if(width > 150){
+                    timerRectangle.setFill(Color.DODGERBLUE);
+                }
                 switch (width){
                     case 150:
                         timerRectangle.setFill(Color.rgb(99,22,225));
