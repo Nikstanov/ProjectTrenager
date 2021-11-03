@@ -94,29 +94,25 @@ public class Generation {
         if(d < 0){
             question1 = question1 + " - " + (x1+x2+x3)*a + "x";
         }
-        else{
-            if(d != 0) {
-                question1 = question1 + " + " + -(x1+x2+x3)*a + "x";
-            }
+        if(d > 0) {
+            question1 = question1 + " + " + -(x1+x2+x3)*a + "x";
         }
+
         int b = x1*x2 + x1*x3 + x2*x3;
         if(a*b < 0){
             question1 = question1 + " - " + -a*b + "x";
         }
-        else{
-            if(a*b != 0 ) {
-                question1 = question1 + " + " + a*b + "x";
-            }
+        if(a*b > 0) {
+            question1 = question1 + " + " + a*b + "x";
         }
         int c = -a * x1 * x2 * x3;
         if(c < 0){
             question1 = question1 + " - " + -c;
         }
-        else{
-            if(c != 0 ) {
-                question1 = question1 + " + " + c;
-            }
+        if(c > 0 ) {
+            question1 = question1 + " + " + c;
         }
+
         question1 = question1 + " = 0";
 
         if(a < 0){
