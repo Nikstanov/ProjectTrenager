@@ -70,9 +70,9 @@ public class MainController implements Initializable {
     public void newFon(ActionEvent event){
         switch (anotherfon.getValue()) {
             case ("Синий фон"):
-                anotherfon.setStyle("-fx-background-color: LightBlue;");
-                forwardfon.setStyle("-fx-background-color: SteelBlue;");
-                backfon.setStyle("-fx-background-color: LightBlue;");
+                anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#0098dc, #0cf1ff);");
+                forwardfon.setStyle("-fx-background-color: #0098dc; -fx-background-radius: 5;");
+                backfon.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;");
                 break;
             case ("Красный фон"):
                 anotherfon.setStyle("-fx-background-color: Brown;");
@@ -261,7 +261,7 @@ public class MainController implements Initializable {
         question3.setText(gen.question3);
         answer0 = gen.answer0;
         mainTextField.setText(answer0[0]);
-        numberOfPraxis.setText(String.format("осталось %s примеров из %s", praxisLeft,praxis));
+        numberOfPraxis.setText(String.format("Осталось %s примеров из %s", praxisLeft,praxis));
         if(praxisLeft == 0) {
             if(level != 0) {
                 exp = exp + 200;

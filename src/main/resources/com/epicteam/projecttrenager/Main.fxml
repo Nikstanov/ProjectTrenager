@@ -5,67 +5,21 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane fx:id="gameMenu" prefHeight="500.0" prefWidth="400.0">
-        <TextField fx:id="mainTextField" layoutX="150.0" layoutY="340.0" onAction="#clickTextField" prefColumnCount="11">
+<AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane fx:id="mainMenu" disable="true" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;">
+        <Button fx:id="startButton" layoutX="22.0" mnemonicParsing="false" onAction="#click1" prefHeight="44.0" prefWidth="348.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Старт" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="30.0">
             <font>
-                <Font size="13.0" />
-            </font>
-        </TextField>
-        <Button fx:id="answerButton" layoutX="140.0" layoutY="390.0" mnemonicParsing="false" onAction="#clickAnswer" text="Отправить">
-         <font>
-            <Font size="20.0" />
-         </font></Button>
-        <Label layoutX="100.0" layoutY="345.0" text="Ответ">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <Label fx:id="question1" layoutX="115.0" layoutY="270.0" text="Вопрос" textAlignment="CENTER">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Label>
-      <Label fx:id="numberOfPraxis" layoutX="130.0" layoutY="432.0" text="осталось _ примеров из _" />
-      <Label fx:id="livesLabel" layoutX="174.0" layoutY="443.0" text="Жизней - 3" />
-      <Button fx:id="buttonReturn" layoutX="303.0" layoutY="230.0" mnemonicParsing="false" onAction="#clickReturn" text="Закончить" />
-      <Rectangle fx:id="timerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#9b2139" height="10.0" layoutX="100.0" layoutY="314.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Label fx:id="question2" layoutX="125.0" layoutY="266.0" text="-   +  -">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <Label fx:id="question3" layoutX="115.0" layoutY="246.0" text="15   15">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-    </AnchorPane>
-    <AnchorPane fx:id="forwardfon" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: SteelBlue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <Label text="Математический " AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="30.0">
-            <font>
-                <Font name="Calibri Bold Italic" size="35.0" />
-            </font>
-        </Label>
-        <Label text="Тренажер" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="80.0">
-            <font>
-                <Font name="Corbel Bold Italic" size="35.0" />
-            </font>
-        </Label>
-    </AnchorPane>
-    <AnchorPane fx:id="mainMenu" disable="true" prefHeight="500.0" prefWidth="400.0">
-        <Button fx:id="startButton" mnemonicParsing="false" onAction="#click1" text="Старт" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
-            <font>
-                <Font size="20.0" />
+                <Font name="System Bold" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="hardbutton" mnemonicParsing="false" onAction="#click2" text="Сложность: Легкий" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="345.6666666666667">
+        <Button fx:id="hardbutton" layoutX="199.0" layoutY="346.0" mnemonicParsing="false" onAction="#click2" prefHeight="44.0" prefWidth="171.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Сложность: Легкий" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="346.0">
             <font>
-                <Font size="15.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="levelbutton" mnemonicParsing="false" onAction="#click" text="Уровень: 1" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="202.0">
+        <Button fx:id="levelbutton" layoutX="19.0" mnemonicParsing="false" onAction="#click" prefHeight="44.0" prefWidth="177.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Уровень: 1" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="204.0">
             <font>
-                <Font size="20.0" />
+                <Font name="System Bold" size="20.0" />
             </font>
         </Button>
         <Label fx:id="diffenough" text="Пройди хотя бы 2 раза на легком" textFill="#ea1b1b" visible="false" AnchorPane.bottomAnchor="110.0">
@@ -75,10 +29,62 @@
         </Label>
         <Label fx:id="levelenough" text="Проблема с доступом" textFill="#ea1b1b" visible="false" AnchorPane.bottomAnchor="110.0" />
     </AnchorPane>
-    <Label fx:id="expmenu" layoutX="55.0" layoutY="250.0" text="Ваш опыт: " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="200.0">
+    <AnchorPane fx:id="gameMenu" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;">
+        <TextField fx:id="mainTextField" layoutX="100.0" layoutY="340.0" onAction="#clickTextField" prefColumnCount="11" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 30;">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+        <Button fx:id="answerButton" layoutX="113.0" layoutY="382.0" mnemonicParsing="false" onAction="#clickAnswer" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Отправить">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+        <Label alignment="CENTER" layoutX="100.0" layoutY="319.0" prefHeight="26.0" prefWidth="200.0" text="Ответ" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="question1" layoutX="115.0" layoutY="270.0" text="Вопрос" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+      <Label fx:id="numberOfPraxis" alignment="CENTER" layoutX="101.0" layoutY="426.0" prefHeight="18.0" prefWidth="200.0" text="Осталось _ примеров из _" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="livesLabel" alignment="CENTER" layoutX="132.0" layoutY="429.0" prefHeight="44.0" prefWidth="142.0" text="Жизней: 3" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Button fx:id="buttonReturn" alignment="CENTER" layoutX="245.0" layoutY="238.0" mnemonicParsing="false" onAction="#clickReturn" prefHeight="30.0" prefWidth="154.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Закончить" />
+      <Rectangle fx:id="timerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#0c2e44" height="10.0" layoutX="100.0" layoutY="314.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Label fx:id="question2" layoutX="125.0" layoutY="266.0" text="-  +  -" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="question3" layoutX="115.0" layoutY="246.0" text="15   15" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+    </AnchorPane>
+    <AnchorPane fx:id="forwardfon" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0098dc; -fx-background-radius: 5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Label alignment="CENTER" layoutX="80.0" layoutY="14.0" prefHeight="123.0" prefWidth="237.0" text="MATH" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="14.0">
+            <font>
+                <Font name="Corbel Bold" size="57.0" />
+            </font>
+        </Label>
+        <Label layoutX="119.0" layoutY="67.0" prefHeight="95.0" prefWidth="162.0" text="Simulator" textFill="WHITE" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="67.0">
+            <font>
+                <Font name="Corbel Bold" size="37.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <ComboBox fx:id="anotherfon" layoutY="202.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#newFon" prefHeight="30.0" prefWidth="154.0" promptText="Синий фон" style="-fx-background-radius: 30; -fx-background-color: linear-gradient(#0098dc, #0cf1ff);" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="202.0" />
+    <Label fx:id="expmenu" layoutX="2.0" layoutY="202.0" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 25;" text="Ваш опыт:" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="202.0">
         <font>
-            <Font name="Corbel Bold Italic" size="14.0" />
+            <Font name="Tahoma Bold" size="14.0" />
         </font>
     </Label>
-    <ComboBox fx:id="anotherfon" onAction="#newFon" prefWidth="150.0" promptText="Синий фон" style="-fx-background-color: LightBlue;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0" />
 </AnchorPane>
