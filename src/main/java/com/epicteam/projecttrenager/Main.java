@@ -49,6 +49,9 @@ public class Main extends Application {
         super.stop();
 
         stage.setOnCloseRequest(windowEvent -> {
+            if (controller.praxisLeft != 0 && controller.level != 0 && controller.exp >= 200){
+                controller.exp = controller.exp - 200;
+            }
             try {
                 FileWriter fw = new FileWriter("preservation.txt");
                 fw.write(controller.exp+"\n");

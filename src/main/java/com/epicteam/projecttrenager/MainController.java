@@ -7,13 +7,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainController implements Initializable {
 
@@ -30,6 +36,8 @@ public class MainController implements Initializable {
     int praxisInARow;
     String answer;
     String[] answer0;
+    ArrayList<Circle> circles = new ArrayList<>();
+    ArrayList<String> list = new ArrayList<>();
     boolean answerIsRight;
     boolean returnBack;
 
@@ -43,8 +51,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        ObservableList<String> list = FXCollections.observableArrayList("Синий фон", "Красный фон", "Желтый фон");
-        anotherfon.setItems(list);
+        list.addAll(new ArrayList<>(Arrays.asList("Синий фон", "Красный фон", "Желтый фон")));
         mainMenu.setDisable(false);
         gameMenu.setDisable(true);
         mainMenu.setVisible(true);
@@ -52,13 +59,165 @@ public class MainController implements Initializable {
         expmenu.setText(STRINGEXP + exp);
         returnBack = false;
         startButton.defaultButtonProperty();
+
+        circles.addAll(new ArrayList<>(Arrays.asList(circle1,circle2,circle3,circle4,circle5,circle6,circle7,circle8,
+                circle9,circle10,circle11,circle12,circle13,circle14,circle15,circle16,circle17,circle18,circle19,
+                circle20,circle21,circle22,circle23,circle24,circle25,circle26,circle27,circle28,circle29,circle30,
+                circle31,circle32,circle33,circle34,circle35,circle36,circle37,circle38,circle39,circle40)));
+
+        File file = new File("C:\\Users\\nstah\\ProjectTrenager\\heart.png");
+
+        try {
+            String localUrl = file.toURI().toURL().toString();
+            Image image = new Image(localUrl);
+            heart1.setImage(image);
+            heart11.setImage(image);
+            heart111.setImage(image);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
+
+    @FXML
+    private Circle circle1;
+
+    @FXML
+    private Circle circle2;
+
+    @FXML
+    private Circle circle3;
+
+    @FXML
+    private Circle circle4;
+
+    @FXML
+    private Circle circle5;
+
+    @FXML
+    private Circle circle6;
+
+    @FXML
+    private Circle circle7;
+
+    @FXML
+    private Circle circle8;
+
+    @FXML
+    private Circle circle9;
+
+    @FXML
+    private Circle circle10;
+
+    @FXML
+    private Circle circle11;
+
+    @FXML
+    private Circle circle12;
+
+    @FXML
+    private Circle circle13;
+
+    @FXML
+    private Circle circle14;
+
+    @FXML
+    private Circle circle15;
+
+    @FXML
+    private Circle circle16;
+
+    @FXML
+    private Circle circle17;
+
+    @FXML
+    private Circle circle18;
+
+    @FXML
+    private Circle circle19;
+
+    @FXML
+    private Circle circle20;
+
+    @FXML
+    private Circle circle21;
+
+    @FXML
+    private Circle circle22;
+
+    @FXML
+    private Circle circle23;
+
+    @FXML
+    private Circle circle24;
+
+    @FXML
+    private Circle circle25;
+
+    @FXML
+    private Circle circle26;
+
+    @FXML
+    private Circle circle27;
+
+    @FXML
+    private Circle circle28;
+
+    @FXML
+    private Circle circle29;
+
+    @FXML
+    private Circle circle30;
+
+    @FXML
+    private Circle circle31;
+
+    @FXML
+    private Circle circle32;
+
+    @FXML
+    private Circle circle33;
+
+    @FXML
+    private Circle circle34;
+
+    @FXML
+    private Circle circle35;
+
+    @FXML
+    private Circle circle36;
+
+    @FXML
+    private Circle circle37;
+
+    @FXML
+    private Circle circle38;
+
+    @FXML
+    private Circle circle39;
+
+    @FXML
+    private Circle circle40;
+
+    @FXML
+    private ImageView heart1;
+
+    @FXML
+    private ImageView heart11;
+
+    @FXML
+    private ImageView heart111;
 
     @FXML
     private Button startButton;
 
     @FXML
-    private ComboBox<String> anotherfon;
+    private FlowPane countOfPraxis;
+
+    @FXML
+    private FlowPane countOfPraxis1;
+
+    @FXML
+    private Button anotherfon;
 
     @FXML
     private AnchorPane backfon;
@@ -66,27 +225,32 @@ public class MainController implements Initializable {
     @FXML
     private AnchorPane forwardfon;
 
+    int fon = 1;
     @FXML
     public void newFon(ActionEvent event){
-        switch (anotherfon.getValue()) {
-            case ("Синий фон"):
+        fon++;
+        if (fon > 3){
+            fon = 1;
+        }
+        switch (fon) {
+            case (1):
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#0098dc, #0cf1ff);");
+                anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #0098dc; -fx-background-radius: 5;");
                 backfon.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;");
                 break;
-            case ("Красный фон"):
-                anotherfon.setStyle("-fx-background-color: Brown;");
+            case (2):
                 forwardfon.setStyle("-fx-background-color: Red;");
                 backfon.setStyle("-fx-background-color: Brown;");
                 break;
-            case ("Желтый фон"):
-                anotherfon.setStyle("-fx-background-color: Goldenrod;");
+            case (3):
                 forwardfon.setStyle("-fx-background-color: Yellow;");
                 backfon.setStyle("-fx-background-color: Goldenrod;");
                 break;
             default:
-                anotherfon.setValue("Error");
+                break;
         }
+        anotherfon.setText(list.get(fon - 1));
     }
 
 
@@ -182,41 +346,33 @@ public class MainController implements Initializable {
     private TextField mainTextField;
 
     @FXML
-    private Label numberOfPraxis;
-
-    @FXML
-    private Label livesLabel;
-
-    @FXML
     private Button buttonReturn;
 
     @FXML
     private void click1(ActionEvent event){
         if(!levelenough.isVisible() && !diffenough.isVisible()) {
             expmenu.setText(STRINGEXP + exp);
-            if (levelenough.isVisible() && exp >= needexp && level != 0 && arrayLevels[level] >= 1) {    // Изменения при достаточном опыте для уровня
+            if (levelenough.isVisible() && exp >= needexp && level != 0 && arrayLevels[level] >= 1) {
                 levelenough.setVisible(false);
             }
-            if (diffenough.isVisible() && exp >= needexp && level != 0 && arrayLevels[level] > 1) {  // Измения при достаточном опыте для уровня сложности
+            if (diffenough.isVisible() && exp >= needexp && level != 0 && arrayLevels[level] > 1) {
                 diffenough.setVisible(false);
             }
 
-            mainMenu.setVisible(false);
-            mainMenu.setDisable(true);
-            gameMenu.setDisable(false);
-            gameMenu.setVisible(true);
+            changeMenu(false);
+            countOfPraxis.setVisible(false);
+            countOfPraxis1.setVisible(false);
 
             praxisInARow = 0;
 
             praxis = numberOfLevels(level);
             praxisLeft = praxis;
+            circles.forEach(circle -> circle.setFill(Color.WHITE));
 
             lives = 3;
-            livesLabel.setVisible(true);
 
             buttonReturn.setVisible(false);
             if(level == 0){
-                livesLabel.setVisible(false);
                 buttonReturn.setVisible(true);
             }
 
@@ -249,7 +405,7 @@ public class MainController implements Initializable {
     private Label question3;
 
     private synchronized void newQuestion(){
-        livesLabel.setText("Жизней - " + lives);
+        hearts(lives);
         Generation gen = new Generation(level, difficult);
         question1.setText(gen.question1);
         question1.setLayoutX(gen.layoutQuestion1);
@@ -261,7 +417,6 @@ public class MainController implements Initializable {
         question3.setText(gen.question3);
         answer0 = gen.answer0;
         mainTextField.setText(answer0[0]);
-        numberOfPraxis.setText(String.format("Осталось %s примеров из %s", praxisLeft,praxis));
         if(praxisLeft == 0) {
             if(level != 0) {
                 exp = exp + 200;
@@ -269,16 +424,10 @@ public class MainController implements Initializable {
             if (arrayLevels[level] < 2){
                 arrayLevels[level]++;
             }
-            mainMenu.setVisible(true);
-            mainMenu.setDisable(false);
-            gameMenu.setDisable(true);
-            gameMenu.setVisible(false);
+            changeMenu(true);
         }
         if(lives == 0){
-            mainMenu.setVisible(true);
-            mainMenu.setDisable(false);
-            gameMenu.setDisable(true);
-            gameMenu.setVisible(false);
+            changeMenu(true);
             if(level != 0 && exp > 0){
                 exp = exp - 400;
             }
@@ -287,18 +436,42 @@ public class MainController implements Initializable {
         praxisLeft--;
     }
 
+    private void hearts(int lives){
+        heart1.setVisible(true);
+        heart11.setVisible(true);
+        heart111.setVisible(true);
+        switch (lives){
+            case 3:
+                break;
+            case 2:
+                heart1.setVisible(false);
+                break;
+            case 1:
+                heart1.setVisible(false);
+                heart11.setVisible(false);
+                break;
+            default:
+                heart1.setVisible(false);
+                heart11.setVisible(false);
+                heart111.setVisible(false);
+        }
+    }
+
 
     private int numberOfLevels(int level){
         if(level != 0) {
+            countOfPraxis.setVisible(true);
             switch (level % 3) {
                 case (1):
                     praxis = 20;
                     break;
                 case (2):
                     praxis = 30;
+                    countOfPraxis1.setVisible(true);
                     break;
                 case (0):
                     praxis = 40;
+                    countOfPraxis1.setVisible(true);
                     break;
                 default:
                     praxis = 10;
@@ -336,8 +509,10 @@ public class MainController implements Initializable {
             if(difficult == 2){
                 exp = exp + 5;
             }
+            circles.get(praxis - praxisLeft - 1).setFill(Color.GREEN);
         }
         else{
+            circles.get(praxis - praxisLeft - 1).setFill(Color.RED);
             praxisInARow = 0;
             lives--;
             if(exp > 10){
@@ -369,13 +544,21 @@ public class MainController implements Initializable {
     @FXML
     private void clickReturn(ActionEvent event){
         if(!returnBack){
-            buttonReturn.setText("Уже устал\nНажми еще раз");
+            buttonReturn.setText("Точно?");
+            returnBack = true;
         }
         else{
-            mainMenu.setVisible(true);
-            mainMenu.setDisable(false);
-            gameMenu.setDisable(true);
-            gameMenu.setVisible(false);
+            changeMenu(true);
+        }
+    }
+
+    public void changeMenu(boolean trueMax){
+        mainMenu.setVisible(trueMax);
+        mainMenu.setDisable(!trueMax);
+        gameMenu.setDisable(trueMax);
+        gameMenu.setVisible(!trueMax);
+        if (exp < 0){
+            exp = 0;
         }
     }
 
@@ -405,7 +588,7 @@ public class MainController implements Initializable {
                         break;
                 }
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(330);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                 }
