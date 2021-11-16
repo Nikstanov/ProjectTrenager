@@ -1,8 +1,6 @@
 package com.epicteam.projecttrenager;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -65,7 +63,7 @@ public class MainController implements Initializable {
                 circle20,circle21,circle22,circle23,circle24,circle25,circle26,circle27,circle28,circle29,circle30,
                 circle31,circle32,circle33,circle34,circle35,circle36,circle37,circle38,circle39,circle40)));
 
-        File file = new File("C:\\Users\\nstah\\ProjectTrenager\\heart.png");
+        File file = new File("heart.png");
 
         try {
             String localUrl = file.toURI().toURL().toString();
