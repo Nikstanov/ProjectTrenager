@@ -6,15 +6,15 @@ import java.text.DecimalFormat;
 public class Generation {
     int level;
     int difficult;
-    public int layoutQuestion2 = 140;
-    public int layoutQuestion1 = 115;
-    public int layoutQuestion3 = 150;
-    public int question2Font = 12;
+    int layoutQuestion2 = 140;
+    int layoutQuestion1 = 115;
+    int layoutQuestion3 = 150;
+    int question2Font = 12;
     public int layoutQuestion2Y = 266;
     String question1;
     String question2;
     String question3;
-    String[] answer0 = new String[]{null,null,null,null,null,null};
+    protected String[] answer0 = new String[]{null,null,null,null,null,null};
 
 
     private static final SecureRandom ran = new SecureRandom();
