@@ -6,11 +6,11 @@ import java.text.DecimalFormat;
 public class Generation {
     int level;
     int difficult;
-    int layoutQuestion2 = 140;
-    int layoutQuestion1 = 115;
-    int layoutQuestion3 = 150;
-    int question2Font = 12;
-    int layoutQuestion2Y = 266;
+    public int layoutQuestion2 = 140;
+    public int layoutQuestion1 = 115;
+    public int layoutQuestion3 = 150;
+    public int question2Font = 12;
+    public int layoutQuestion2Y = 266;
     String question1;
     String question2;
     String question3;
@@ -19,7 +19,7 @@ public class Generation {
 
     private static final SecureRandom ran = new SecureRandom();
 
-    Generation(int level, int difficult){
+    public Generation(int level, int difficult){
         this.difficult = difficult;
         this.level = level;
         generator(level,difficult);
