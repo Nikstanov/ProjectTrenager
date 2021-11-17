@@ -12,15 +12,12 @@ class GenerationTest {
 
     @Test
     void generator() {
-        int expLayoutQuestion3 = 150;
-        int expQuestion2Font = 12;
-        int expLayoutQuestion2Y = 266;
 
         assert(generation.layoutQuestion2 < 200 && 100 < generation.layoutQuestion2);
         assert(generation.layoutQuestion1 < 200 && 100 < generation.layoutQuestion1);
-        assertEquals(expLayoutQuestion3, generation.layoutQuestion3);
-        assertEquals(expQuestion2Font, generation.question2Font);
-        assertEquals(expLayoutQuestion2Y, generation.layoutQuestion2Y);
+        assert(generation.layoutQuestion3 < 300 && 100 < generation.layoutQuestion3);
+        assert(generation.question2Font < 30 && 10 < generation.question2Font);
+        assert(generation.layoutQuestion2Y < 300 && 100 < generation.layoutQuestion2Y);
     }
 
     @Test
