@@ -25,7 +25,7 @@ public class Generation {
         generator(level,difficult);
     }
 
-    private void generator(int level, int difficult){
+    protected void generator(int level, int difficult){
         int numberOfExample = 1;
         if(difficult == 1) {
             if (0 < level) {
@@ -75,7 +75,7 @@ public class Generation {
         }
     }
 
-    private void qubeEquations(){
+    protected void qubeEquations(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
             a = ran.nextInt(20) - 10;
@@ -141,7 +141,7 @@ public class Generation {
         answer0[5] = x3 + "," + x2 + "," + x1;
     }
 
-    private void quadEquationsEasy(){
+    protected void quadEquationsEasy(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
             a = ran.nextInt(20) - 10;
@@ -183,7 +183,7 @@ public class Generation {
         answer0[1] = x2 + "," + x1;
     }
 
-    private void hardEquationsEasy(){
+    protected void hardEquationsEasy(){
         DecimalFormat df = new DecimalFormat("###.##");
         double a = ran.nextInt(200)/10d - 10;
         while(a == 0) {
@@ -214,7 +214,7 @@ public class Generation {
         layoutQuestion1 = 145;
     }
 
-    private void easyEquationsEasy(){
+    protected void easyEquationsEasy(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
             a = ran.nextInt(20) - 10;
@@ -237,7 +237,7 @@ public class Generation {
         layoutQuestion1 = 145;
     }
 
-    private void hardEquationsEasy1(){
+    protected void hardEquationsEasy1(){
         int a = znak(ran.nextInt(80) + 21);
         int b = znak(ran.nextInt(80) + 21);
         int x = znak(ran.nextInt(80) + 21);
@@ -254,7 +254,7 @@ public class Generation {
         layoutQuestion1 = 145;
     }
 
-    private int znak(int number){
+    protected int znak(int number){
         int znak = ran.nextInt(2) + 1;
         if(znak == 2){
             number = number * (-1);
@@ -262,7 +262,7 @@ public class Generation {
         return number;
     }
 
-    private void fraction(){
+    protected void fraction(){
         int b = ran.nextInt(10);
         while (b <= 1){
             b = ran.nextInt(10);
