@@ -236,14 +236,41 @@ public class MainController implements Initializable {
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #0098dc; -fx-background-radius: 5;");
                 backfon.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;");
+                startButton.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                hardbutton.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                levelbutton.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                answerButton.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                buttonReturn.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                expmenu.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                anotherfon.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
                 break;
             case (2):
-                forwardfon.setStyle("-fx-background-color: Red;");
-                backfon.setStyle("-fx-background-color: Brown;");
+                anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ea323c, #f5555d);");
+                anotherfon.setTextFill(Color.WHITE);
+                forwardfon.setStyle("-fx-background-color: #ea323c; -fx-background-radius: 5;");
+                backfon.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 5;");
+                startButton.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                hardbutton.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                levelbutton.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                answerButton.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                buttonReturn.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                expmenu.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                anotherfon.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                timerRectangle.setFill(Color.RED);
                 break;
             case (3):
-                forwardfon.setStyle("-fx-background-color: Yellow;");
-                backfon.setStyle("-fx-background-color: Goldenrod;");
+                anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ffc825, #ffeb57);");
+                anotherfon.setTextFill(Color.WHITE);
+                forwardfon.setStyle("-fx-background-color: #ffc825; -fx-background-radius: 5;");
+                backfon.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 5;");
+                startButton.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                hardbutton.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                levelbutton.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                answerButton.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                buttonReturn.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                expmenu.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                anotherfon.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                timerRectangle.setFill(Color.YELLOW);
                 break;
             default:
                 break;
@@ -570,17 +597,17 @@ public class MainController implements Initializable {
                 timerRectangle.setWidth(width);
                 width = width - 1;
                 if(width > 150){
-                    timerRectangle.setFill(Color.DODGERBLUE);
+                    timerRectangle.setFill(Color.rgb(255,213,0));
                 }
                 switch (width){
                     case 150:
-                        timerRectangle.setFill(Color.rgb(99,22,225));
+                        timerRectangle.setFill(Color.rgb(255,213,0));
                         break;
                     case 100:
-                        timerRectangle.setFill(Color.rgb(148,60,201));
+                        timerRectangle.setFill(Color.rgb(239,165,16));
                         break;
                     case 50:
-                        timerRectangle.setFill(Color.rgb(155,33,57));
+                        timerRectangle.setFill(Color.rgb(232,12,12));
                         break;
                     default:
                         break;

@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane fx:id="mainMenu" disable="true" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;" visible="false">
-        <Button fx:id="startButton" layoutX="28.0" layoutY="338.0" mnemonicParsing="false" onAction="#click1" prefHeight="68.0" prefWidth="348.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Старт" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="24.0">
+        <Button fx:id="startButton" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#click1" prefHeight="68.0" prefWidth="362.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Старт" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
@@ -18,7 +18,7 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="levelbutton" layoutX="25.0" layoutY="280.0" mnemonicParsing="false" onAction="#click" prefHeight="44.0" prefWidth="169.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Уровень: 1" AnchorPane.bottomAnchor="176.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="206.0">
+        <Button fx:id="levelbutton" layoutX="16.0" layoutY="280.0" mnemonicParsing="false" onAction="#click" prefHeight="44.0" prefWidth="162.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Уровень: 1" AnchorPane.bottomAnchor="176.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="222.0">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
@@ -36,7 +36,7 @@
                 <Font size="13.0" />
             </font>
         </TextField>
-        <Button fx:id="answerButton" layoutX="113.0" layoutY="382.0" mnemonicParsing="false" onAction="#clickAnswer" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Отправить">
+        <Button fx:id="answerButton" layoutX="102.0" layoutY="382.0" mnemonicParsing="false" onAction="#clickAnswer" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Отправить">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
@@ -54,7 +54,8 @@
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font></Button>
-      <Rectangle fx:id="timerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#0c2e44" height="12.0" layoutX="100.0" layoutY="314.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="timerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffffff" height="12.0" layoutX="100.0" layoutY="314.0" stroke="#ffffff"
+                 strokeType="INSIDE" width="200.0" />
       <Label fx:id="question2" layoutX="125.0" layoutY="266.0" text="Всякие знаки и приколдесы" textFill="WHITE">
          <font>
             <Font size="20.0" />
@@ -133,7 +134,7 @@
             </font>
         </Label>
     </AnchorPane>
-    <Label fx:id="expmenu" alignment="CENTER" layoutX="2.0" layoutY="202.0" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 25; -fx-alignment: center;" text="Ваш опыт:" textFill="WHITE" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="202.0">
+    <Label fx:id="expmenu" alignment="CENTER" layoutX="1.0" layoutY="202.0" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 25; -fx-alignment: center;" text="Ваш опыт:" textFill="WHITE" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="202.0">
         <font>
             <Font name="Tahoma Bold" size="14.0" />
         </font>
