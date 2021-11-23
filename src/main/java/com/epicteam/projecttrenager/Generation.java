@@ -65,8 +65,11 @@ public class Generation {
             case 5:
                 quadEquationsEasy();
                 break;
+            case 6:
+                cubicEquationsEasy();
+                break;
             case 7:
-                qubeEquations();
+                qubeEquationsHard();
                 break;
             default:
                 question1 = "В разработке";
@@ -74,8 +77,11 @@ public class Generation {
                 break;
         }
     }
+    protected void cubicEquationsEasy(){
+        
+    }
 
-    protected void qubeEquations(){
+    protected void qubeEquationsHard(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
             a = ran.nextInt(20) - 10;
